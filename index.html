@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+
+    <title>Portfolio</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+      if (
+        localStorage.getItem("dark-mode") === "true" ||
+        (!("dark-mode" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.querySelector("html").classList.add("dark");
+      } else {
+        document.querySelector("html").classList.remove("dark");
+      }
+    </script>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+    </style>
+  </head>
+  <body class="relative dark:bg-[#272934] bg-white font-Montserrat">
+    <nav
+      class="w-[100%] z-50 fixed top-0 md:py-6 py-4 bg-white overflow-x-hidden shadow-4 dark:bg-white border-b"
+    >
+      <div
+        x-data="{ expanded: false }"
+        class="lg:w-[75%] md:w-[95%] w-[90%] mx-auto flex lg:flex-row md:flex-col flex-col items-start lg:items-center justify-start lg:justify-between"
+      >
+        <button
+          @click="expanded = ! expanded"
+          class="flex w-full items-end md:justify-end md:items-end justify-end lg:hidden"
+        >
+          <svg
+            class="md:h-10 md:w-10 h-8 w-8"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M4 6H20M4 12H20M4 18H20"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </button>
+        <div
+          class="w-full lg:hidden flex flex-col items-start md:items-start justify-start md:justify-start"
+          x-show="expanded"
+          x-collapse
+        >
+          <ul
+            class="block lg:hidden text-lg md:flex-col flex-col items-center justify-start md:space-y-6 space-y-6 md:text-[12pt] text-[10pt]"
+          >
+            <li class="capitalize"></li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#">Home</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#skills">Skills</a>
+            </li>
+
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#projects">Projects</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#talks">Talks</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#publication">Publications</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] hover:font-[700] leading-normal font-[400]"
+            >
+              <a href="#">CV</a>
+            </li>
+          </ul>
+          <div
+            class="flex lg:flex-row flex-col md:items-start items-start lg:items-center text-black hover:font-[700] leading-normal font-[400] lg:text-[12pt] text-[8pt] lg:space-y-0 md:space-y-6 space-y-6 lg:pt-0 pt-4 justify-start lg:space-x-4"
+          >
+            <svg
+              class="h-6 w-6 hover:text-[#33B38D]"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="currentColor"
+              stroke-width="0.12000000000000002"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+            </svg>
+
+            <div class="flex flex-col justify-start md:justify-center lg:ml-3">
+              <input
+                type="checkbox"
+                name="light-switch"
+                class="light-switch sr-only"
+              />
+              <label
+                class="relative cursor-pointer md:p-2 text-[#000000] dark:text-white hover:text-[#33B38D]"
+                for="light-switch"
+              >
+                <svg
+                  class="dark:hidden"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x-init="light-switch = false"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g clip-path="url(#a)" fill="currentColor">
+                      <path
+                        d="M12 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM4.929 3.515a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 0 0 1.414-1.414L4.93 3.515ZM1 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2H1ZM18 12a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1ZM17.657 16.243a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 1 0 1.414-1.414l-2.828-2.828ZM7.757 17.657a1 1 0 1 0-1.414-1.414L3.515 19.07a1 1 0 1 0 1.414 1.414l2.828-2.828ZM20.485 4.929a1 1 0 0 0-1.414-1.414l-2.828 2.828a1 1 0 1 0 1.414 1.414l2.828-2.828ZM13 19a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="a">
+                        <path fill="#ffffff" d="M0 0h24v24H0z"></path>
+                      </clipPath>
+                    </defs>
+                  </g>
+                </svg>
+
+                <!-- <svg
+                  x-init="light-switch = true"
+                  class="hidden dark:block text-[#000000] hover:text-[#33b38d]"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 35.00 35.00"
+                  data-name="Layer 2"
+                  id="Layer_2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="currentColor"
+                  stroke-width="0.00035"
+                  transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="currentColor"
+                    stroke-width="0.07"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M18.44,34.68a18.22,18.22,0,0,1-2.94-.24,18.18,18.18,0,0,1-15-20.86A18.06,18.06,0,0,1,9.59.63,2.42,2.42,0,0,1,12.2.79a2.39,2.39,0,0,1,1,2.41L11.9,3.1l1.23.22A15.66,15.66,0,0,0,23.34,21h0a15.82,15.82,0,0,0,8.47.53A2.44,2.44,0,0,1,34.47,25,18.18,18.18,0,0,1,18.44,34.68ZM10.67,2.89a15.67,15.67,0,0,0-5,22.77A15.66,15.66,0,0,0,32.18,24a18.49,18.49,0,0,1-9.65-.64A18.18,18.18,0,0,1,10.67,2.89Z"
+                    ></path>
+                  </g>
+                </svg> -->
+                <svg
+                  viewBox="0 0 1024 1024"
+                  class="hidden dark:block text-[#000000] hover:text-[#33b38d]"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  transform="matrix(-1, 0, 0, 1, 0, 0)"
+                  stroke="currentColor"
+                  stroke-width="0.01024"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M785.334 194.943c174.789 174.787 174.789 459.179 0 633.967-174.787 174.787-459.178 174.787-633.967 0-13.206-13.205-26.22-28.336-39.807-46.314a19.672 19.672 0 0 1-2.223-20.012 19.777 19.777 0 0 1 16.54-11.442c98.838-6.698 191.601-48.753 261.234-118.386C530.853 489.014 546.472 258.475 423.392 96.51a19.553 19.553 0 0 1-2.249-19.981 19.554 19.554 0 0 1 16.54-11.497c129.587-8.759 256.325 38.583 347.651 129.911z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M785.334 194.943c-14.266-14.268-29.484-27.325-45.354-39.399 151.302 175.925 143.723 442.269-22.987 608.98-121.85 121.85-307.044 190.195-461.161 142.154 60.038 35.511 140.886 47.603 167.101 50.984 129.417 13.067 263.464-29.816 362.401-128.753 174.789-174.787 174.789-459.179 0-633.966z"
+                      fill="currentColor"
+                    ></path>
+                  </g>
+                </svg>
+                <span class="sr-only">Switch to light / dark version</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <!----lgscreen nav-->
+        <div
+          class="w-full hidden lg:flex lg:flex-row flex-col items-start md: lg:items-center justify-start lg:justify-between"
+        >
+          <ul
+            class="lg:flex block text-lg lg:flex-row flex-col items-center justify-start md:space-y-6 lg:space-y-0 space-y-6 lg:space-x-10 md:text-[12pt] text-[10pt]"
+          >
+            <li class="capitalize"></li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#">Home</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#skills">Skills</a>
+            </li>
+
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#projects">Projects</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#talks">Talks</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] active:font-[700] leading-normal font-[400]"
+            >
+              <a href="#publications">Publications</a>
+            </li>
+            <li
+              class="text-black hover:text-[#33B38D] hover:font-[700] leading-normal font-[400]"
+            >
+              <a href="#">CV</a>
+            </li>
+          </ul>
+          <div
+            class="flex md:flex-row flex-col items-start md:items-center text-black hover:font-[700] leading-normal font-[400] lg:text-[12pt] text-[8pt] md:space-y-0 space-y-6 md:pt-0 pt-4 justify-start md:space-x-4"
+          >
+            <svg
+              class="h-6 w-6 hover:text-[#33B38D]"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="currentColor"
+              stroke-width="0.12000000000000002"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+            </svg>
+
+            <div class="flex flex-col justify-start md:justify-center md:ml-3">
+              <input
+                type="checkbox"
+                name="light-switch"
+                class="light-switch sr-only"
+              />
+              <button
+                onclick="(() => document.body.classList.toggle('dark'))()"
+                class="relative cursor-pointer md:p-2 text-[#000000] dark:text-white hover:text-[#33B38D]"
+                for="light-switch"
+              >
+                <svg
+                  class="dark:hidden"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x-init="light-switch = false"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g clip-path="url(#a)" fill="currentColor">
+                      <path
+                        d="M12 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM4.929 3.515a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 0 0 1.414-1.414L4.93 3.515ZM1 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2H1ZM18 12a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1ZM17.657 16.243a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 1 0 1.414-1.414l-2.828-2.828ZM7.757 17.657a1 1 0 1 0-1.414-1.414L3.515 19.07a1 1 0 1 0 1.414 1.414l2.828-2.828ZM20.485 4.929a1 1 0 0 0-1.414-1.414l-2.828 2.828a1 1 0 1 0 1.414 1.414l2.828-2.828ZM13 19a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="a">
+                        <path fill="#ffffff" d="M0 0h24v24H0z"></path>
+                      </clipPath>
+                    </defs>
+                  </g>
+                </svg>
+
+                <svg
+                  class="hidden light dark:block text-[#000000] hover:text-[#33b38d]"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 35.00 35.00"
+                  data-name="Layer 2"
+                  id="Layer_2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="currentColor"
+                  stroke-width="0.00035"
+                  transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="currentColor"
+                    stroke-width="0.07"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M18.44,34.68a18.22,18.22,0,0,1-2.94-.24,18.18,18.18,0,0,1-15-20.86A18.06,18.06,0,0,1,9.59.63,2.42,2.42,0,0,1,12.2.79a2.39,2.39,0,0,1,1,2.41L11.9,3.1l1.23.22A15.66,15.66,0,0,0,23.34,21h0a15.82,15.82,0,0,0,8.47.53A2.44,2.44,0,0,1,34.47,25,18.18,18.18,0,0,1,18.44,34.68ZM10.67,2.89a15.67,15.67,0,0,0-5,22.77A15.66,15.66,0,0,0,32.18,24a18.49,18.49,0,0,1-9.65-.64A18.18,18.18,0,0,1,10.67,2.89Z"
+                    ></path>
+                  </g>
+                </svg>
+                <span class="sr-only">Switch to light / dark version</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="intro"
+      class="flex lg:flex-row flex-col lg:w-[70%] md:w-[90%] w-[95%] lg:items-start items-center justify-center lg:justify-start md:space-x-12 mx-auto mt-40"
+    >
+      <div
+        class="flex flex-col lg:w-[35%] md:w-[50%] items-center justify-center"
+      >
+        <div class="h-48 w-48 rounded-full">
+          <img
+            class="h-full w-full rounded-full"
+            src="./asset/asset.jpg"
+            alt=""
+          />
+        </div>
+        <div class="text-center">
+          <h1 class="md:text-[28pt] text-[20pt] dark:text-[#F8F8F2]">
+            Nikoloz Sirmpilatze
+          </h1>
+          <p
+            class="text-gray-500 dark:text-[#A9A9AE] md:text-[16pt] text-[14pt]"
+          >
+            Research Software Engineer
+          </p>
+          <p>
+            <a
+              href="#"
+              class="text-[#33B38D] cursor-pointer active:underline md:text-[16pt] text-[14pt]"
+            >
+              Sainsbury Wellcome Centre
+            </a>
+          </p>
+          <p class="w-[90%] cursor-pointer pl-8 text-center py-2">
+            <a
+              href="#"
+              class="text-[#33B38D] active:underline leading-snug md:text-[16pt] text-[14pt]"
+            >
+              Gatsby Computational Neuroscience Unit
+            </a>
+          </p>
+          <p>
+            <a
+              href="#"
+              class="text-[#33B38D] cursor-pointer active:underline md:text-[16pt] text-[14pt]"
+            >
+              University College London (UCL)
+            </a>
+          </p>
+          <div class="flex flex-row items-center pt-6 justify-center">
+            <a href="#" class="">
+              <svg
+                class="md:h-10 md:w-10 h-8 w-8"
+                fill="#33B38D"
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 33.88 33.88"
+                xml:space="preserve"
+                stroke="#33B38D"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <path
+                      d="M30.414,10.031c0.014,0.297,0.021,0.595,0.021,0.897c0,9.187-6.992,19.779-19.779,19.779c-3.928,0-7.58-1.149-10.657-3.123 c0.546,0.063,1.099,0.095,1.658,0.095c3.26,0,6.254-1.107,8.632-2.974c-3.039-0.058-5.607-2.065-6.491-4.828 c0.424,0.082,0.858,0.125,1.308,0.125c0.635,0,1.248-0.084,1.83-0.244c-3.177-0.639-5.576-3.448-5.576-6.815 c0-0.029,0-0.058,0-0.087c0.939,0.521,2.01,0.833,3.15,0.869C2.646,12.48,1.419,10.35,1.419,7.938c0-1.274,0.343-2.467,0.94-3.495 c3.427,4.206,8.552,6.973,14.327,7.263c-0.117-0.509-0.18-1.038-0.18-1.584c0-3.838,3.112-6.949,6.953-6.949 c1.998,0,3.805,0.844,5.07,2.192c1.582-0.311,3.072-0.89,4.416-1.686c-0.521,1.624-1.621,2.986-3.057,3.844 c1.406-0.166,2.746-0.54,3.991-1.092C32.949,7.826,31.771,9.05,30.414,10.031z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a href="#" class="">
+              <svg
+                class="md:h-14 md:w-14 h-12 w-12"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Google Scholar"
+                role="img"
+                viewBox="0 0 512 512"
+                fill="#33B38D"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <rect width="512" height="512" rx="15%" fill="none"></rect>
+                  <path
+                    fill="#33B38Dfff"
+                    d="M213 111l-107 94h69c5 45 41 64 78 67-7 18-4 27 7 39-43 1-103 26-103 67 4 45 63 54 92 54 38 1 81-19 90-54 4-35-10-54-31-71-23-18-28-28-21-40 15-17 35-27 39-51 2-17-2-28-6-43l45-38-1 16c-3 2-5 6-5 9v103c2 13 22 11 23 0V160c0-3-2-7-5-8v-25l16-16zm58 141c-61 10-87-87-38-99 56-11 83 86 38 99zm-5 73c60 13 61 63 10 78-44 9-82-4-81-30 0-25 35-48 71-48z"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                class="md:h-14 md:w-14 h-12 w-12"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="#33B38D"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M9.35003 16.88C9.35003 16.95 9.28003 17 9.18003 17C9.08003 17 9.00003 17 9.00003 16.88C9.00003 16.76 9.08003 16.76 9.17003 16.76C9.26003 16.76 9.35003 16.81 9.35003 16.88ZM8.35003 16.73C8.35003 16.8 8.35003 16.88 8.49003 16.9C8.52584 16.9172 8.56701 16.9195 8.6045 16.9064C8.642 16.8933 8.67275 16.8658 8.69003 16.83C8.69003 16.76 8.69003 16.69 8.55003 16.66C8.41003 16.63 8.37003 16.66 8.35003 16.73ZM9.77003 16.68C9.68003 16.68 9.62003 16.76 9.63003 16.84C9.64003 16.92 9.72003 16.95 9.82003 16.93C9.92003 16.91 9.97003 16.84 9.96003 16.77C9.95003 16.7 9.87003 16.67 9.77003 16.68ZM11.9 4.00002C10.8454 3.99009 9.79962 4.19333 8.82547 4.59754C7.85132 5.00175 6.96887 5.5986 6.23107 6.35227C5.49328 7.10594 4.91535 8.0009 4.53197 8.98343C4.14859 9.96597 3.96765 11.0158 4.00003 12.07C3.97211 13.7969 4.48426 15.4894 5.46493 16.9111C6.4456 18.3328 7.84582 19.4127 9.47003 20C9.88003 20.07 10.03 19.81 10.03 19.6C10.03 19.39 10.03 18.26 10.03 17.6C10.03 17.6 7.77003 18.1 7.29003 16.6C7.29003 16.6 6.93003 15.6 6.40003 15.39C6.40003 15.39 5.66003 14.87 6.45003 14.88C6.70877 14.9149 6.95573 15.01 7.17108 15.1576C7.38643 15.3052 7.56417 15.5013 7.69003 15.73C7.79466 15.9351 7.9401 16.1167 8.11742 16.2635C8.29473 16.4104 8.50019 16.5195 8.72118 16.5841C8.94218 16.6487 9.17404 16.6675 9.40255 16.6393C9.63106 16.6111 9.85139 16.5364 10.05 16.42C10.0879 16.0025 10.2679 15.6107 10.56 15.31C8.76003 15.1 6.94003 14.84 6.94003 11.65C6.92091 11.2896 6.97881 10.9293 7.10985 10.5931C7.2409 10.2569 7.44209 9.95241 7.70003 9.70002C7.45667 8.96799 7.48507 8.17282 7.78003 7.46002C8.46003 7.24002 10.01 8.35002 10.01 8.35002C11.3342 7.97655 12.7359 7.97655 14.06 8.35002C14.06 8.35002 15.61 7.24002 16.29 7.46002C16.5914 8.17142 16.6198 8.96894 16.37 9.70002C16.6371 9.94893 16.8489 10.2511 16.9919 10.587C17.1348 10.9229 17.2057 11.285 17.2 11.65C17.2 14.85 15.3 15.1 13.5 15.31C13.6809 15.5129 13.8186 15.7506 13.9046 16.0085C13.9905 16.2664 14.023 16.5391 14 16.81C14 17.93 14 19.31 14 19.58C13.9994 19.6475 14.015 19.7142 14.0456 19.7744C14.0763 19.8346 14.1209 19.8866 14.1759 19.9258C14.2308 19.9651 14.2945 19.9905 14.3613 19.9999C14.4282 20.0094 14.4964 20.0025 14.56 19.98C16.1813 19.3978 17.5786 18.321 18.5547 16.9017C19.5309 15.4824 20.0364 13.7922 20 12.07C20.0094 11.0051 19.8061 9.94902 19.402 8.96371C18.9979 7.9784 18.4011 7.08369 17.6467 6.33205C16.8923 5.58041 15.9953 4.98696 15.0085 4.58651C14.0217 4.18606 12.9649 3.98667 11.9 4.00002ZM7.14003 15.41C7.14003 15.41 7.14003 15.52 7.14003 15.58C7.15118 15.5912 7.16442 15.6001 7.17901 15.6061C7.1936 15.6122 7.20923 15.6153 7.22503 15.6153C7.24082 15.6153 7.25646 15.6122 7.27105 15.6061C7.28563 15.6001 7.29888 15.5912 7.31003 15.58C7.31003 15.58 7.31003 15.47 7.31003 15.4C7.31003 15.33 7.18003 15.37 7.14003 15.41ZM6.79003 15.14C6.79003 15.14 6.79003 15.24 6.86003 15.27C6.86846 15.2805 6.87913 15.2889 6.89124 15.2947C6.90335 15.3004 6.91661 15.3035 6.93003 15.3035C6.94345 15.3035 6.9567 15.3004 6.96881 15.2947C6.98093 15.2889 6.99159 15.2805 7.00003 15.27C7.00003 15.27 7.00003 15.17 6.93003 15.14C6.86003 15.11 6.81003 15.11 6.79003 15.14ZM7.79003 16.32C7.79003 16.32 7.79003 16.46 7.79003 16.53C7.79003 16.6 7.96003 16.61 8.00003 16.53C8.04003 16.45 8.00003 16.39 8.00003 16.32C8.00003 16.25 7.87003 16.27 7.83003 16.32H7.79003ZM7.42003 15.83C7.42003 15.83 7.42003 15.95 7.42003 16.03C7.42003 16.11 7.56003 16.14 7.61003 16.11C7.63535 16.0809 7.6493 16.0436 7.6493 16.005C7.6493 15.9664 7.63535 15.9291 7.61003 15.9C7.56003 15.82 7.48003 15.79 7.42003 15.83Z"
+                    fill="#33B38D"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:w-[65%] md:w-[80%] w-[95%] mx-auto lg:mt-0 md:mt-10 mt-5 text-[#313131] dark:text-[#F8F8F2]"
+      >
+        <h1 class="md:text-[32pt] text-[24pt] dark:text-[#98A6AD]">About me</h1>
+        <p
+          class="md:text-[14pt] text-[12pt] font-medium md:leading-relaxed pt-2"
+        >
+          I’m Niko, a medical doctor turned neuroscientist and image analyst.
+          Since October 2022, I work as a Research Software Engineer at the<span
+            ><a class="hover:underline text-[#33B38D]" href="#">
+              Sainsbury Wellcome Centre
+            </a></span
+          >
+          and
+          <span
+            ><a class="hover:underline text-[#33B38D]" href="#">
+              Gatsby Computational Neuroscience Unit</a
+            ></span
+          >.
+        </p>
+
+        <p class="md:text-[14pt] text-[12pt] font-medium leading-relaxed pt-6">
+          I completed my PhD at the
+          <span
+            ><a class="hover:underline text-[#33B38D]" href="#">
+              Functional Imaging Lab
+            </a></span
+          >
+          of the
+          <span
+            ><a class="hover:underline text-[#33B38D]" href="#">
+              German Primate Center</a
+            ></span
+          >, where I studied the effects of anesthesia on brain function using
+          neuroimaging techniques, including functional Magnetic Resonance
+          Imaging (fMRI) and in vivo 2‐photon calcium imaging.
+        </p>
+        <p class="md:text-[14pt] text-[12pt] font-medium leading-relaxed pt-6">
+          I care about promoting open, collaborative, and reproducible science.
+          In my free time, you will find me dancing to swing music and trying to
+          play the saxophone.
+        </p>
+        <div
+          class="flex md:flex-row flex-col md:justify-between justify-start pt-6"
+        >
+          <div class="">
+            <p
+              class="font-bold dark:text-[#98A6AD] md:text-[18pt] text-[14pt] pb-2"
+            >
+              Interests
+            </p>
+            <ul
+              class="list-disc list-inside md:pl-6 md:text-[12pt] text-sm md:space-y-2"
+            >
+              <li class="font-medium">Neuroscience</li>
+              <li class="font-medium">Neuroimaging</li>
+              <li class="font-medium">Anasthesia</li>
+              <li class="font-medium">Open Science</li>
+              <li class="font-medium">Software</li>
+            </ul>
+          </div>
+          <div class="md:pt-0 pt-6">
+            <p
+              class="font-bold dark:text-[#98A6AD] md:text-[18pt] text-[14pt] pb-2"
+            >
+              Education
+            </p>
+            <div class="flex flex-row space-x-3 md:pl-6">
+              <span class="pt-2 dark:text-[#F8F8F2] text-black"
+                ><svg
+                  height="24px"
+                  width="24px"
+                  version="1.1"
+                  id="Icons"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 32 32"
+                  xml:space="preserve"
+                  fill="currentColor"
+                  transform="matrix(-1, 0, 0, 1, 0, 0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <style type="text/css">
+                      .st0 {
+                        fill: currentColor;
+                      }
+                    </style>
+                    <g>
+                      <path
+                        d="M31,26c-0.6,0-1-0.4-1-1V12c0-0.6,0.4-1,1-1s1,0.4,1,1v13C32,25.6,31.6,26,31,26z"
+                      ></path>
+                    </g>
+                    <g>
+                      <path
+                        d="M16,21c-0.2,0-0.3,0-0.5-0.1l-15-8C0.2,12.7,0,12.4,0,12s0.2-0.7,0.5-0.9l15-8c0.3-0.2,0.6-0.2,0.9,0l15,8 c0.3,0.2,0.5,0.5,0.5,0.9s-0.2,0.7-0.5,0.9l-15,8C16.3,21,16.2,21,16,21z"
+                      ></path>
+                    </g>
+                    <path
+                      d="M17.4,22.6C17,22.9,16.5,23,16,23s-1-0.1-1.4-0.4L6,18.1V22c0,3.1,4.9,6,10,6s10-2.9,10-6v-3.9L17.4,22.6z"
+                    ></path>
+                  </g></svg
+              ></span>
+              <div>
+                <p class="md:text-[12pt] text-[10pt] font-medium">
+                  PhD in Neuroimaging, May 2017 - Sep 2021
+                </p>
+                <p
+                  class="text-[#666666] dark:text-[#A9A9AE] md:text-sm text-[8pt] pt-1 font-medium"
+                >
+                  German Primate Center
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-row py-2 space-x-3 md:pl-6">
+              <span class="pt-2 dark:text-[#F8F8F2] text-black"
+                ><svg
+                  height="24px"
+                  width="24px"
+                  version="1.1"
+                  id="Icons"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 32 32"
+                  xml:space="preserve"
+                  fill="currentColor"
+                  transform="matrix(-1, 0, 0, 1, 0, 0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <style type="text/css">
+                      .st0 {
+                        fill: currentColor;
+                      }
+                    </style>
+                    <g>
+                      <path
+                        d="M31,26c-0.6,0-1-0.4-1-1V12c0-0.6,0.4-1,1-1s1,0.4,1,1v13C32,25.6,31.6,26,31,26z"
+                      ></path>
+                    </g>
+                    <g>
+                      <path
+                        d="M16,21c-0.2,0-0.3,0-0.5-0.1l-15-8C0.2,12.7,0,12.4,0,12s0.2-0.7,0.5-0.9l15-8c0.3-0.2,0.6-0.2,0.9,0l15,8 c0.3,0.2,0.5,0.5,0.5,0.9s-0.2,0.7-0.5,0.9l-15,8C16.3,21,16.2,21,16,21z"
+                      ></path>
+                    </g>
+                    <path
+                      d="M17.4,22.6C17,22.9,16.5,23,16,23s-1-0.1-1.4-0.4L6,18.1V22c0,3.1,4.9,6,10,6s10-2.9,10-6v-3.9L17.4,22.6z"
+                    ></path>
+                  </g></svg
+              ></span>
+              <div>
+                <p class="md:text-[12pt] text-[10pt] font-medium">
+                  MSc in Neuroscience, Sep 2015 - Apr 2017
+                </p>
+                <p
+                  class="text-[#666666] dark:text-[#A9A9AE] md:text-sm text-[8pt] pt-1 font-medium"
+                >
+                  German Primate Center
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-row space-x-3 md:pl-6">
+              <span class="pt-2 dark:text-[#F8F8F2] text-black"
+                ><svg
+                  height="24px"
+                  width="24px"
+                  version="1.1"
+                  id="Icons"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 32 32"
+                  xml:space="preserve"
+                  fill="currentColor"
+                  transform="matrix(-1, 0, 0, 1, 0, 0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <style type="text/css">
+                      .st0 {
+                        fill: currentColor;
+                      }
+                    </style>
+                    <g>
+                      <path
+                        d="M31,26c-0.6,0-1-0.4-1-1V12c0-0.6,0.4-1,1-1s1,0.4,1,1v13C32,25.6,31.6,26,31,26z"
+                      ></path>
+                    </g>
+                    <g>
+                      <path
+                        d="M16,21c-0.2,0-0.3,0-0.5-0.1l-15-8C0.2,12.7,0,12.4,0,12s0.2-0.7,0.5-0.9l15-8c0.3-0.2,0.6-0.2,0.9,0l15,8 c0.3,0.2,0.5,0.5,0.5,0.9s-0.2,0.7-0.5,0.9l-15,8C16.3,21,16.2,21,16,21z"
+                      ></path>
+                    </g>
+                    <path
+                      d="M17.4,22.6C17,22.9,16.5,23,16,23s-1-0.1-1.4-0.4L6,18.1V22c0,3.1,4.9,6,10,6s10-2.9,10-6v-3.9L17.4,22.6z"
+                    ></path>
+                  </g></svg
+              ></span>
+              <div>
+                <p class="md:text-[12pt] text-[10pt] font-medium">
+                  Medical Degree, Sep 2009 - Jul 2015
+                </p>
+                <p
+                  class="text-[#666666] dark:text-[#A9A9AE] md:text-sm text-[8pt] pt-1 font-medium"
+                >
+                  German Primate Center
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="skills"
+      class="w-[100vw] bg-[#F7F7F7] dark:bg-[#23252F] dark:text-[#F8F8F2] md:py-20 md:my-32 my-20 py-16"
+    >
+      <p class="md:text-[34pt] text-[26pt] text-center">Skills</p>
+      <div
+        class="flex md:flex-row flex-col md:w-[80%] lg:w-[60%] w-[95%] mx-auto items-center justify-between"
+      >
+        <div
+          class="flex flex-col md:w-[20%] w-[90%] items-center justify-center"
+        >
+          <span
+            ><svg
+              class="md:h-[80px] md:w-[100px] h-[50px] w-[60px]"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 502.66 502.66"
+              xml:space="preserve"
+              fill="#33b38d"
+              stroke="#33b38d"
+              stroke-width="27.143856"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M153.821,358.226L0,274.337v-46.463l153.821-83.414v54.574L46.636,250.523l107.185,53.431 C153.821,303.954,153.821,358.226,153.821,358.226z"
+                    ></path>
+                    <path
+                      d="M180.094,387.584L282.103,115.08h32.227L212.084,387.584H180.094z"
+                    ></path>
+                    <path
+                      d="M348.843,358.226v-54.272l107.164-52.999l-107.164-52.59v-53.927l153.821,83.522v46.183 L348.843,358.226z"
+                    ></path>
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </g>
+              </g></svg
+          ></span>
+          <p
+            class="text-[#333333] dark:text-[#F8F8F2] md:text-[20pt] text-[16pt]"
+          >
+            Programming
+          </p>
+          <p
+            class="md:text-[11pt] text-[9pt] text-center dark:text-[#F8F8F2] text-[#555555]"
+          >
+            <span class="font-semibold">Python</span>, Bash, R, git, LaTeX
+          </p>
+        </div>
+        <div
+          class="flex flex-col md:w-[40%] md:pt-0 pt-3 w-full items-center justify-center"
+        >
+          <span
+            ><svg
+              class="md:h-[80px] md:w-[100px] h-[50px] w-[60px]"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 502.66 502.66"
+              xml:space="preserve"
+              fill="#33b38d"
+              stroke="#33b38d"
+              stroke-width="27.143856"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M153.821,358.226L0,274.337v-46.463l153.821-83.414v54.574L46.636,250.523l107.185,53.431 C153.821,303.954,153.821,358.226,153.821,358.226z"
+                    ></path>
+                    <path
+                      d="M180.094,387.584L282.103,115.08h32.227L212.084,387.584H180.094z"
+                    ></path>
+                    <path
+                      d="M348.843,358.226v-54.272l107.164-52.999l-107.164-52.59v-53.927l153.821,83.522v46.183 L348.843,358.226z"
+                    ></path>
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </g>
+              </g></svg
+          ></span>
+          <p
+            class="text-[#333333] text-center dark:text-[#F8F8F2] text-[16pt] md:text-[20pt]"
+          >
+            Neuroimaging software
+          </p>
+          <p
+            class="md:text-[11pt] text-[9pt] text-center dark:text-[#F8F8F2] text-[#555555]"
+          >
+            <span class="font-semibold">FSL, ANTS</span>, AFNI, BrainVoyager,
+            Freesurfer, Connectome Workbench
+          </p>
+        </div>
+        <div
+          class="flex flex-col md:w-[20%] w-[90%] md:pt-0 pt-3 items-center text-center justify-center"
+        >
+          <span
+            ><svg
+              class="md:h-[80px] md:w-[100px] h-[50px] w-[60px]"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 502.66 502.66"
+              xml:space="preserve"
+              fill="#33b38d"
+              stroke="#33b38d"
+              stroke-width="27.143856"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M153.821,358.226L0,274.337v-46.463l153.821-83.414v54.574L46.636,250.523l107.185,53.431 C153.821,303.954,153.821,358.226,153.821,358.226z"
+                    ></path>
+                    <path
+                      d="M180.094,387.584L282.103,115.08h32.227L212.084,387.584H180.094z"
+                    ></path>
+                    <path
+                      d="M348.843,358.226v-54.272l107.164-52.999l-107.164-52.59v-53.927l153.821,83.522v46.183 L348.843,358.226z"
+                    ></path>
+                  </g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                  <g></g>
+                </g>
+              </g></svg
+          ></span>
+          <p
+            class="text-[#333333] dark:text-[#F8F8F2] text-[16pt] md:text-[20pt]"
+          >
+            Languages
+          </p>
+          <p
+            class="md:text-[11pt] text-[9pt] text-center dark:text-[#F8F8F2] text-[#555555]"
+          >
+            <span class="font-semibold">Greek, Georgian, English </span>,
+            German, Russian
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      id="projects"
+      class="flex md:flex-row flex-col lg:w-[70%] md:w-[90%] items-start justify-start md:space-x-10 lg:space-x-20 w-[90%] mx-auto"
+    >
+      <h1
+        class="md:text-[32pt text-[26pt] md:w-[30%] text-[#333333] dark:text-[#98A6AD]"
+      >
+        Projects
+      </h1>
+
+      <!--Tabs navigation-->
+      <div class="md:w-[70%] w-[95%]">
+        <ul
+          class="mb-5 flex w-full font-bold list-none flex-row pt-3 items-center flex-wrap text-[white] dark:text-black pl-0"
+          role="tablist"
+          data-te-nav-ref
+        >
+          <li role="presentation">
+            <a
+              href="#tabs-home"
+              class="block border font-semibold bg-[#33b38d] hover:bg-green-300 rounded-l-lg md:py-1.5 md:px-2 py-1 px-1 text-[white] dark:text-black border-transparent data-[te-nav-active]:bg-[#278B6E] md:text-[13pt] text-[10pt] leading-tight hover:isolate focus:isolate focus:border-transparent data-[te-nav-active]:border-[#33b38d] data-[te-nav-active]:text-white dark:data-[te-nav-active]:border-primary-[#33b38d] dark:data-[te-nav-active]:border-4 data-[te-nav-active]:border-4 dark:data-[te-nav-active]:text-black"
+              data-te-toggle="pill"
+              data-te-target="#tabs-home"
+              data-te-nav-active
+              role="tab"
+              aria-controls="tabs-home"
+              aria-selected="true"
+              >All</a
+            >
+          </li>
+          <li role="presentation">
+            <a
+              href="#tabs-profile"
+              class="block border font-semibold bg-[#33b38d] hover:bg-green-300 md:py-1.5 md:px-2 py-1 px-1 text-[white] dark:text-black border-transparent data-[te-nav-active]:bg-[#278B6E] md:text-[13pt] text-[10pt] leading-tight hover:isolate focus:isolate focus:border-transparent data-[te-nav-active]:border-[#33b38d] data-[te-nav-active]:text-white dark:data-[te-nav-active]:border-primary-[#33b38d] dark:data-[te-nav-active]:border-4 data-[te-nav-active]:border-4 dark:data-[te-nav-active]:text-black"
+              data-te-toggle="pill"
+              data-te-target="#tabs-profile"
+              role="tab"
+              aria-controls="tabs-profile"
+              aria-selected="false"
+              >My research</a
+            >
+          </li>
+          <li role="presentation">
+            <a
+              href="#tabs-messages"
+              class="block border bg-[#33b38d] font-semibold hover:bg-green-300 rounded-r-lg md:py-1.5 md:px-2 py-1 px-1 text-[white] dark:text-black border-transparent data-[te-nav-active]:bg-[#278B6E] md:text-[13pt] text-[10pt] leading-tight hover:isolate focus:isolate focus:border-transparent data-[te-nav-active]:border-[#33b38d] data-[te-nav-active]:text-white dark:data-[te-nav-active]:border-primary-[#33b38d] dark:data-[te-nav-active]:border-4 data-[te-nav-active]:border-4 dark:data-[te-nav-active]:text-black"
+              data-te-toggle="pill"
+              data-te-target="#tabs-messages"
+              role="tab"
+              aria-controls="tabs-messages"
+              aria-selected="false"
+              >Collaborative</a
+            >
+          </li>
+        </ul>
+
+        <!--Tabs content-->
+        <div class="my-8">
+          <div
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            id="tabs-home"
+            role="tabpanel"
+            aria-labelledby="tabs-home-tab"
+            data-te-tab-active
+          >
+            <div
+              class="delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0"
+              data-taos-offset="400"
+            >
+              <div
+                class="flex flex-row justify-between hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+              <div
+                class="flex flex-row justify-between py-12 hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+              <div
+                class="flex flex-row justify-between hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+              <div
+                class="flex flex-row justify-between py-12 hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+              <div
+                class="flex flex-row justify-between hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+              <div
+                class="flex flex-row justify-between hover:text-[#33b38d] py-12 dark:hover:text-[#33b38d] items-start"
+              >
+                <div>
+                  <h1
+                    class="md:text-[20pt] text-[16pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    AFIDs-macaca
+                  </h1>
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    A standardized framework for evaluating anatomical
+                    correspondence between primate brains
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 md:py-1 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+                <a href="#"><img src="./asset/project1.png" alt="project" /></a>
+              </div>
+            </div>
+          </div>
+          <!---2nd content-->
+          <div
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            id="tabs-profile"
+            role="tabpanel"
+            aria-labelledby="tabs-profile-tab"
+          >
+            <div
+              class="flex flex-row justify-between hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+            >
+              <div
+                class="delay-[300ms] duration-[600ms] taos:translate-x-[100%] taos:invisible"
+                data-taos-offset="400"
+              >
+                <div
+                  class="delay-[300ms] duration-[600ms] taos:translate-x-[-100%] taos:invisible"
+                  taos-offset="400"
+                >
+                  <h1
+                    class="md:text-[20pt] text-[14pt] font-bold md:w-[90%] w-[95%] hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                  >
+                    fMRI mapping of anesthesia-induced burst-suppression across
+                    species
+                  </h1>
+
+                  <p
+                    class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                  >
+                    My main PhD project.
+                  </p>
+                  <div
+                    class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                  >
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      Website
+                    </div>
+                    <div
+                      class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                    >
+                      <span class="h-4 w-4"
+                        ><svg
+                          class=""
+                          fill="currentColor"
+                          viewBox="0 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                            ></path>
+                          </g></svg
+                      ></span>
+                      <p>Website</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="delay-[300ms] duration-[600ms] taos:translate-x-[100%] taos:invisible"
+                data-taos-offset="400"
+              >
+                <a href="#"><img src="./asset/project2.png" alt="project" /></a>
+              </div>
+            </div>
+          </div>
+          <!------3rd content-->
+          <div
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            id="tabs-messages"
+            role="tabpanel"
+            aria-labelledby="tabs-profile-tab"
+          >
+            <div class="flex flex-row justify-between items-start">
+              <div>
+                <h1
+                  class="md:text-[20pt] text-[14pt] font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+                >
+                  AFIDs-macaca
+                </h1>
+                <p
+                  class="text-black w-[90%] md:text-sm text-xs hover:text-[#33b38d] dark:hover:text-[#33b38d] dark:text-white"
+                >
+                  A standardized framework for evaluating anatomical
+                  correspondence between primate brains
+                </p>
+                <div
+                  class="flex flex-row items-center md:space-x-3 space-x-2 pt-6 w-full"
+                >
+                  <div
+                    class="border w-[] border-[#33b38d] text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                  >
+                    Website
+                  </div>
+                  <div
+                    class="border w-[] border-[#33b38d] text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                  >
+                    Website
+                  </div>
+                  <div
+                    class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                  >
+                    <span class="h-4 w-4"
+                      ><svg
+                        fill="#33b38d"
+                        viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg"
+                        stroke="#33b38d"
+                      >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path
+                            d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                          ></path>
+                        </g></svg
+                    ></span>
+                    <p>Website</p>
+                  </div>
+                </div>
+              </div>
+              <a href="#"><img src="./asset/project3.png" alt="project" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="w-[100%] bg-[#F7F7F7] md:py-20 py-16 dark:bg-[#23252F] dark:text-[#F8F8F2] md:my-32 my-10"
+    >
+      <div
+        id="talks"
+        class="flex md:flex-row flex-col lg:w-[70%] md:w-[90%] items-start justify-start w-[95%] mx-auto"
+      >
+        <h1
+          class="md:text-[32pt] text-[24pt] md:w-[35%] text-[#333333] dark:text-[#98A6AD]"
+        >
+          Recent & Upcoming Talks
+        </h1>
+
+        <div class="md:w-[65%] md:pt-0 pt-6 w-[95%]">
+          <div
+            class="flex flex-row justify-between hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+          >
+            <div>
+              <h1
+                class="md:text-[20pt] text-[14pt] w-[100%] leading-snug font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+              >
+                fMRI signatures of deep anesthesia in primates and rodents
+              </h1>
+              <p
+                class="text-black w-[90%] pt-2 md:text-sm text-xs font-medium dark:text-white"
+              >
+                Douglas Research Centre CIC Imaging Series Lecture
+              </p>
+              <p
+                class="text-[#999BA0] w-[90%] font-medium md:text-sm text-xs pt-4"
+              >
+                Nov 24, 2021 11:00AM . Montreal, Canada
+              </p>
+              <a
+                href="#"
+                class="text-[#999BA0] w-[90%] pt-1 md:text-sm text-xs font-medium"
+              >
+                Nikoloz Sirmpilatze
+              </a>
+              <div
+                class="flex flex-row items-center md:space-x-3 space-x-2 pt-4 w-full"
+              >
+                <a
+                  href="#"
+                  class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                >
+                  Project
+                </a>
+
+                <a
+                  href="#"
+                  class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                >
+                  <span class="h-4 w-4"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M19.67 8.14002C19.5811 7.7973 19.4028 7.48433 19.1533 7.23309C18.9038 6.98185 18.5921 6.80134 18.25 6.71001C16.176 6.4654 14.0883 6.35517 12 6.38001C9.91174 6.35517 7.82405 6.4654 5.75001 6.71001C5.40793 6.80134 5.09622 6.98185 4.84674 7.23309C4.59725 7.48433 4.41894 7.7973 4.33001 8.14002C4.10282 9.41396 3.99236 10.706 4.00001 12C3.99198 13.3007 4.10244 14.5994 4.33001 15.88C4.42355 16.2172 4.60391 16.5239 4.85309 16.7696C5.10226 17.0153 5.41153 17.1913 5.75001 17.28C7.82405 17.5246 9.91174 17.6349 12 17.61C14.0883 17.6349 16.176 17.5246 18.25 17.28C18.5885 17.1913 18.8978 17.0153 19.1469 16.7696C19.3961 16.5239 19.5765 16.2172 19.67 15.88C19.8976 14.5994 20.008 13.3007 20 12C20.0077 10.706 19.8972 9.41396 19.67 8.14002ZM10.36 14.39V9.63001L14.55 12L10.36 14.38V14.39Z"
+                          fill="currentColor"
+                        ></path>
+                      </g></svg
+                  ></span>
+                  <p>Watch on YouTube</p>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="./asset/project3.png" alt="project" /></a>
+          </div>
+          <div
+            class="flex flex-row justify-between py-12 hover:text-[#33b38d] dark:hover:text-[#33b38d] items-start"
+          >
+            <div>
+              <h1
+                class="md:text-[20pt] text-[14pt] w-[100%] leading-snug font-bold hover:text-[#33b38d] dark:hover:text-[#33b38d] text-black dark:text-white"
+              >
+                fMRI signatures of deep anesthesia in primates and rodents
+              </h1>
+              <p
+                class="text-black w-[90%] pt-2 md:text-sm text-xs font-medium dark:text-white"
+              >
+                Douglas Research Centre CIC Imaging Series Lecture
+              </p>
+              <p
+                class="text-[#999BA0] w-[90%] font-medium md:text-sm text-xs pt-4"
+              >
+                Nov 24, 2021 11:00AM . Montreal, Canada
+              </p>
+              <a
+                href="#"
+                class="text-[#999BA0] w-[90%] pt-1 md:text-sm text-xs font-medium"
+              >
+                Nikoloz Sirmpilatze
+              </a>
+              <div
+                class="flex flex-row items-center md:space-x-3 space-x-2 pt-4 w-full"
+              >
+                <a
+                  href="#"
+                  class="border w-[] border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                >
+                  Project
+                </a>
+
+                <a
+                  href="#"
+                  class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+                >
+                  <span class="h-4 w-4"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M19.67 8.14002C19.5811 7.7973 19.4028 7.48433 19.1533 7.23309C18.9038 6.98185 18.5921 6.80134 18.25 6.71001C16.176 6.4654 14.0883 6.35517 12 6.38001C9.91174 6.35517 7.82405 6.4654 5.75001 6.71001C5.40793 6.80134 5.09622 6.98185 4.84674 7.23309C4.59725 7.48433 4.41894 7.7973 4.33001 8.14002C4.10282 9.41396 3.99236 10.706 4.00001 12C3.99198 13.3007 4.10244 14.5994 4.33001 15.88C4.42355 16.2172 4.60391 16.5239 4.85309 16.7696C5.10226 17.0153 5.41153 17.1913 5.75001 17.28C7.82405 17.5246 9.91174 17.6349 12 17.61C14.0883 17.6349 16.176 17.5246 18.25 17.28C18.5885 17.1913 18.8978 17.0153 19.1469 16.7696C19.3961 16.5239 19.5765 16.2172 19.67 15.88C19.8976 14.5994 20.008 13.3007 20 12C20.0077 10.706 19.8972 9.41396 19.67 8.14002ZM10.36 14.39V9.63001L14.55 12L10.36 14.38V14.39Z"
+                          fill="currentColor"
+                        ></path>
+                      </g></svg
+                  ></span>
+                  <p>Watch on YouTube</p>
+                </a>
+              </div>
+            </div>
+            <a href="#"><img src="./asset/project3.png" alt="project" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="publications"
+      class="flex md:flex-row flex-col lg:w-[70%] md:w-[90%] items-start justify-start md:space-x-10 lg:space-x-20 w-[95%] mx-auto"
+    >
+      <h1
+        class="md:text-[32pt] text-[24pt] md:w-[30%] text-[#333333] dark:text-[#98A6AD]"
+      >
+        Publications
+      </h1>
+
+      <ul class="md:w-[70%] w-[95%] md:pt-0 pt-6">
+        <li class="">
+          <h1
+            class="md:text-[14pt] text-[12pt] justify-start items-start text-left flex flex-row font-medium w-full text-[#33b38d] hover:underline"
+          >
+            <span class="">
+              <svg
+                class="h-6 w-6 pt-2 space-x-3"
+                version="1.1"
+                id="_x32_"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 512 512"
+                xml:space="preserve"
+                fill="#999BA0"
+                transform="matrix(-1, 0, 0, 1, 0, 0)"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <style type="text/css">
+                    .st0 {
+                      fill: #999ba0;
+                    }
+                  </style>
+                  <g>
+                    <path
+                      class="st0"
+                      d="M198.765,0L53.398,145.383V512h405.204V0H198.765z M196.634,49.667v93.576h-93.576L196.634,49.667z M424.995,478.393H87.005V172.897h139.29V33.614h198.7V478.393z"
+                    ></path>
+                    <rect
+                      x="157.393"
+                      y="237.971"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                    <rect
+                      x="157.393"
+                      y="308.686"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                    <rect
+                      x="157.393"
+                      y="379.401"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            Spatial signatures of anesthesia-induced burst-suppression differ
+            between primates and rodents
+          </h1>
+
+          <p class="text-[#98A6AD]">
+            Nikoloz Sirmpilatze, Judith Mylius, Michael Ortiz-Rios, Jürgen
+            Baudewig, Jaakko Paasonen, Daniel Golkowski, Andreas Ranft, Rüdiger
+            Ilg, Olli Gröhn, Susann Boretius
+          </p>
+          <div class="flex flex-row items-center space-x-3 pt-6 w-full">
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Cite
+            </a>
+            <a
+              href="project.html"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Project
+            </a>
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              DOI
+            </a>
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Data
+            </a>
+            <a
+              href="#"
+              class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] px-2 py-1 rounded-md"
+            >
+              <span class="h-4 w-4"
+                ><svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="currentColor"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                    ></path>
+                  </g></svg
+              ></span>
+              <p>Talk</p>
+            </a>
+          </div>
+        </li>
+        <li class="py-12">
+          <h1
+            class="md:text-[14pt] text-[12pt] justify-start items-start text-left flex flex-row font-medium w-full text-[#33b38d] hover:underline"
+          >
+            <span class="">
+              <svg
+                class="h-6 w-6 pt-2 space-x-3"
+                version="1.1"
+                id="_x32_"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 512 512"
+                xml:space="preserve"
+                fill="#999BA0"
+                transform="matrix(-1, 0, 0, 1, 0, 0)"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <style type="text/css">
+                    .st0 {
+                      fill: #999ba0;
+                    }
+                  </style>
+                  <g>
+                    <path
+                      class="st0"
+                      d="M198.765,0L53.398,145.383V512h405.204V0H198.765z M196.634,49.667v93.576h-93.576L196.634,49.667z M424.995,478.393H87.005V172.897h139.29V33.614h198.7V478.393z"
+                    ></path>
+                    <rect
+                      x="157.393"
+                      y="237.971"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                    <rect
+                      x="157.393"
+                      y="308.686"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                    <rect
+                      x="157.393"
+                      y="379.401"
+                      class="st0"
+                      width="197.206"
+                      height="25.896"
+                    ></rect>
+                  </g>
+                </g>
+              </svg>
+            </span>
+            Spatial signatures of anesthesia-induced burst-suppression differ
+            between primates and rodents
+          </h1>
+
+          <p class="text-[#98A6AD]">
+            Nikoloz Sirmpilatze, Judith Mylius, Michael Ortiz-Rios, Jürgen
+            Baudewig, Jaakko Paasonen, Daniel Golkowski, Andreas Ranft, Rüdiger
+            Ilg, Olli Gröhn, Susann Boretius
+          </p>
+          <div class="flex flex-row items-center space-x-3 pt-6 w-full">
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Cite
+            </a>
+            <a
+              href="project.html"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Project
+            </a>
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              DOI
+            </a>
+            <a
+              href="#"
+              class="border w-[] border-[#33b38d] text-[10pt] md:text-xs hover:bg-[#33b38d] hover:text-white text-[#33b38d] md:px-2 px-1 py-1 rounded-md"
+            >
+              Data
+            </a>
+            <a
+              href="#"
+              class="border w-[] flex flex-row space-x-1 items-center border-[#33b38d] md:text-xs text-[10pt] hover:bg-[#33b38d] hover:text-white text-[#33b38d] px-2 py-1 rounded-md"
+            >
+              <span class="h-4 w-4"
+                ><svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="currentColor"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M11.919 24.94c-2.548 0-4.921-.747-6.919-2.032a9.049 9.049 0 0 0 6.681-1.867 4.512 4.512 0 0 1-4.215-3.137c.276.054.559.082.848.082.412 0 .812-.056 1.193-.156a4.519 4.519 0 0 1-3.622-4.425v-.059a4.478 4.478 0 0 0 2.042.564 4.507 4.507 0 0 1-2.008-3.758c0-.824.225-1.602.612-2.268a12.811 12.811 0 0 0 9.303 4.715 4.517 4.517 0 0 1 7.692-4.115 9.107 9.107 0 0 0 2.866-1.094 4.542 4.542 0 0 1-1.983 2.498 9.08 9.08 0 0 0 2.592-.71 9.283 9.283 0 0 1-2.252 2.337c.008.193.014.388.014.583-.001 5.962-4.542 12.843-12.844 12.842"
+                    ></path>
+                  </g></svg
+              ></span>
+              <p>Talk</p>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="bg-white text-black dark:text-white flex items-center justify-center text-center md:py-20 py-16 mt-20 md:mt-32 dark:bg-[#282A36]"
+    >
+      <div
+        class="md:w-[70%] w-[95%] flex flex-row md:justify-end justify-between md:space-x-96 md:text-sm text-xs mx-auto"
+      >
+        <p class="">
+          Powered by the
+          <a
+            href="ogunmakinjuolanrewajuofficial@gmail.com"
+            class="text-[#33b38d]"
+          >
+            TechySuite Team
+          </a>
+          for <span class="text-[#33b38d]">Hugo</span>.
+        </p>
+        <a href="#intro"
+          ><svg
+            class="md:h-[24px] md:w-[24px] h-[16px] w-[16px]"
+            fill="#9C9DA2"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 512.01 512.01"
+            xml:space="preserve"
+            stroke="#9C9DA2"
+            stroke-width="29.184569999999997"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <g>
+                  <path
+                    d="M505.755,358.256L271.088,123.589c-8.341-8.341-21.824-8.341-30.165,0L6.256,358.256c-8.341,8.341-8.341,21.824,0,30.165 s21.824,8.341,30.165,0l219.584-219.584l219.584,219.584c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251 C514.096,380.08,514.096,366.597,505.755,358.256z"
+                  ></path>
+                </g>
+              </g>
+            </g></svg
+        ></a>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
+    <script
+      type="text/javascript"
+      src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"
+    ></script>
+    <script>
+      const lightSwitches = document.querySelectorAll(".light-switch");
+      if (lightSwitches.length > 0) {
+        lightSwitches.forEach((lightSwitch, i) => {
+          if (localStorage.getItem("dark-mode") === "true") {
+            lightSwitch.checked = true;
+          }
+          lightSwitch.addEventListener("change", () => {
+            const { checked } = lightSwitch;
+            lightSwitches.forEach((el, n) => {
+              if (n !== i) {
+                el.checked = checked;
+              }
+            });
+            if (lightSwitch.checked) {
+              document.documentElement.classList.add("dark");
+              localStorage.setItem("dark-mode", true);
+            } else {
+              document.documentElement.classList.remove("dark");
+              localStorage.setItem("dark-mode", false);
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
