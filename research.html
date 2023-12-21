@@ -26,6 +26,7 @@
         document.querySelector("html").classList.remove("dark");
       }
     </script>
+     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -35,7 +36,7 @@
   </head>
   <body class="relative dark:bg-[#272934] bg-white font-Montserrat">
     <nav
-      class="w-[100%] z-50 fixed top-0 md:py-6 py-4 bg-white overflow-x-hidden shadow-4 dark:bg-white border-b"
+      class="w-[100%] z-50 fixed top-0 md:py-6 py-3 bg-white overflow-x-hidden shadow-4 dark:bg-white border-b"
     >
       <div
         x-data="{ expanded: false }"
@@ -46,7 +47,7 @@
           class="flex w-full items-end md:justify-end md:items-end justify-end lg:hidden"
         >
           <svg
-            class="md:h-10 md:w-10 h-8 w-8"
+            class="md:h-10 md:w-10 h-6 w-6"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
